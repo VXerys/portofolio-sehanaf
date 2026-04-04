@@ -32,3 +32,11 @@ This folder provides reusable `.prompt.md` shortcuts for day-to-day engineering 
 1. Pick one prompt file that matches the task intent.
 2. Fill the placeholders in the Input Template section.
 3. Run the prompt to enforce repository-specific constraints.
+
+## Auto-Selection Cues
+
+- Routing and RSC cues: `rsc`, `server component`, `client component`, `hydration`, `loading`, `not-found`, `route segment`.
+- Motion and Scroll cues: `gsap`, `scrolltrigger`, `lenis`, `parallax`, `animation performance`, `mobile degradation`.
+- UI and Block cues: `tailwind`, `cn`, `shadcn`, `21st.dev`, `wrapper`, `variant`, `accessibility`.
+- Supabase cues: `supabase`, `typed query`, `schema sync`, `rls`, `cache revalidation`, `server-only data`.
+- Review and Hygiene cues: `code review`, `findings`, `diagnostics`, `lint`, `prompt pack`, `instruction healthcheck`.
