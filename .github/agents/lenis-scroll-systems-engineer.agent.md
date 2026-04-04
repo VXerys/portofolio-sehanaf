@@ -19,6 +19,13 @@ You own the global smooth-scroll engine and scroll synchronization behavior.
 - Drive Lenis from GSAP ticker for timing consistency.
 - Ensure teardown removes ticker callback and destroys Lenis instance cleanly.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select lenis-scroll-bridge.instructions.md for provider wiring and synchronization logic.
+- Auto-select gsap-lenis-motion.instructions.md when changes include ScrollTrigger synchronization behavior.
+- Auto-select motion-performance-gate.instructions.md for scroll-runtime changes that can affect frame stability.
+- Auto-select wire-lenis-scroll-bridge.skill.md for Lenis and GSAP ticker bridge work.
+
 ## Must Not
 - Do not implement section-specific GSAP timelines.
 - Do not add Supabase data fetching behavior.

@@ -22,6 +22,13 @@ You own the visual system contract and component consistency.
 - Ensure TypeScript props are explicit for reusable components.
 - Keep accessibility defaults intact for interactive components.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select ui-tailwind-cn.instructions.md for class composition and responsive styling updates.
+- Auto-select shadcn-wrapper-governance.instructions.md when extending shadcn-based wrappers.
+- Auto-select naming-conventions.instructions.md for component or selector naming changes.
+- Auto-select adapt-21st-shadcn-component.skill.md when adapting imported creative blocks into local wrappers.
+
 ## Must Not
 - Do not edit Supabase query logic or schema.
 - Do not implement GSAP timeline orchestration.

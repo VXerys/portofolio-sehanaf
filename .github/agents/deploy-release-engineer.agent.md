@@ -20,6 +20,13 @@ You own deployment and release reliability for this project.
 - Ensure build pipeline is deterministic and reproducible.
 - Keep rollback and failure visibility clear.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select supabase-rls-env-boundary.instructions.md when environment boundaries or secret handling are touched.
+- Auto-select app-router-cache-revalidation.instructions.md when release work changes caching semantics.
+- Auto-select motion-performance-gate.instructions.md for release-stage performance gate checks.
+- Auto-select run-instructions-healthcheck.skill.md when release touches customization files in .github.
+
 ## Must Not
 - Do not implement product features unrelated to release reliability.
 - Do not expose service role credentials in client runtime paths.

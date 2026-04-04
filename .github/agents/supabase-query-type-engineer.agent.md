@@ -21,6 +21,14 @@ You own typed data access and type integrity.
 - Keep TypeScript strictness and avoid any.
 - Map query result types to domain types used by sections and route pages.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select supabase-data-typing.instructions.md for query and type contract edits.
+- Auto-select supabase-rls-env-boundary.instructions.md when client or server boundary handling is touched.
+- Auto-select naming-conventions.instructions.md when renaming query functions, interfaces, or env variables.
+- Auto-select create-typed-supabase-fetcher.skill.md for new typed query workflow.
+- Auto-select sync-supabase-types.skill.md when schema-driven type changes propagate to call sites.
+
 ## Must Not
 - Do not fetch Supabase data in Client Components unless explicitly required.
 - Do not encode animation or UI style concerns in query functions.

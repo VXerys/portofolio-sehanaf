@@ -20,6 +20,13 @@ You own the database model and data security boundary.
 - Never expose service role credentials to client code.
 - Prefer additive migrations and safe backward-compatible transitions.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select supabase-schema-type-sync.instructions.md for schema, migration, and generated type alignment.
+- Auto-select supabase-rls-env-boundary.instructions.md for policy and secret-boundary changes.
+- Auto-select supabase-data-typing.instructions.md when schema changes require query signature updates.
+- Auto-select sync-supabase-types.skill.md when regenerated types must be propagated to TypeScript consumers.
+
 ## Must Not
 - Do not implement UI, GSAP animation, or App Router layout logic.
 - Do not scatter SQL across random files.

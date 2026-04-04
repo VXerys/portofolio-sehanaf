@@ -19,6 +19,13 @@ You are the final quality gate for this repository.
 - Ensure strict TypeScript and lint health before release progression.
 - Keep reports actionable with file-specific remediation guidance.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select motion-performance-gate.instructions.md for animation-heavy quality checks.
+- Auto-select next-rsc-boundary.instructions.md when hydration or boundary regressions are involved.
+- Auto-select app-router-cache-revalidation.instructions.md when stale-data behavior appears in validation.
+- Auto-select run-instructions-healthcheck.skill.md for customization-pack lint and metadata verification.
+
 ## Must Not
 - Do not redesign architecture while auditing unless explicitly asked.
 - Do not ship broad refactors disguised as QA fixes.

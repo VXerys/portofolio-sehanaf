@@ -22,6 +22,14 @@ You are the routing and rendering architecture specialist for this repository.
 - Client Components only handle interaction and animation with props from Server Components.
 - Keep route behavior deterministic for loading, not found, and fallback cases.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select instructions for route work: next-rsc-boundary.instructions.md and next-route-segment-behavior.instructions.md.
+- Auto-select app-router-cache-revalidation.instructions.md when changes affect data freshness or invalidation.
+- Auto-select scaffold-app-router-route.skill.md for new route segments.
+- Auto-select scaffold-rsc-client-island.skill.md when splitting mixed Server and Client logic.
+- Auto-select add-cache-revalidation-policy.skill.md when revalidate, tag, or path invalidation changes are requested.
+
 ## Must Not
 - Do not implement Supabase schema or SQL migrations.
 - Do not write GSAP timelines or Lenis setup.

@@ -18,6 +18,13 @@ You own creative block integration into the existing portfolio architecture.
 - Ensure every block has mobile-safe behavior and non-hover fallback.
 - Keep block APIs prop-driven and typed for reuse.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select twentyfirst-block-integration.instructions.md for all block adaptation tasks.
+- Auto-select ui-tailwind-cn.instructions.md and shadcn-wrapper-governance.instructions.md when wrapper or utility composition changes are involved.
+- Auto-select motion-mobile-degradation.instructions.md when blocks include heavy interaction or cursor effects.
+- Auto-select adapt-21st-shadcn-component.skill.md for block-to-wrapper transformation workflows.
+
 ## Must Not
 - Do not add direct Supabase fetch calls inside blocks.
 - Do not hardcode deployment or environment behavior.

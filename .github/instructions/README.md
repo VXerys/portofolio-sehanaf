@@ -4,6 +4,7 @@ This folder contains file-specific instruction packs loaded by relevance and app
 
 ## Active Instruction Files
 
+- agent-orchestration-autoselection.instructions.md - Focus: intent-based auto-selection of specialist agents, instruction packs, and skills per phase.
 - next-rsc-boundary.instructions.md - Focus: RSC-first architecture, Server vs Client boundaries, route loading and not-found handling.
 - next-route-segment-behavior.instructions.md - Focus: dynamic segment behavior, route-level async boundaries, and server-owned param/data flow.
 - app-router-cache-revalidation.instructions.md - Focus: cache strategy, revalidate policies, and server-side invalidation discipline.
@@ -23,8 +24,9 @@ This folder contains file-specific instruction packs loaded by relevance and app
 ## Usage
 
 - For complex tasks, start from Portfolio Workflow Coordinator agent.
-- Let coordinator delegate to specialist agents.
+- Let coordinator delegate to specialist agents and enforce per-phase auto-selection of matching instructions and skills.
 - The instruction packs will be attached automatically based on touched files.
+- Global always-on guidance is defined in .github/copilot-instructions.md.
 
 ## Maintenance Notes
 

@@ -1,22 +1,23 @@
 ---
 name: "create-typed-supabase-fetcher"
-description: "Use when: adding a new Supabase query utility with explicit return types and server-first consumption in App Router."
+description: "Use when: adding or refactoring Supabase query functions with generated types, domain mapping, and server-only data access boundaries."
 ---
+
 # create-typed-supabase-fetcher
 
 ## Purpose and Trigger
 
-Call this skill when introducing a new data fetch path from Supabase.
-Expected result: strongly typed query function consumed by Server Components without any leakage to client fetch logic.
+Call this skill when implementing a new query function for portfolio data.
+Expected result: query is typed end-to-end, mapped to domain shape, and safe for RLS and server boundary expectations.
 
 ## Primary Executor Agent
 
-Supabase Query and Type Engineer
+- Supabase Query and Type Engineer
 
 ## Workflow
 
-1. Define the target return shape using generated Supabase types and domain-facing aliases.
-2. Implement query in lib/supabase/queries.ts with explicit return type annotation.
-3. Handle error cases with predictable typed output contract.
-4. Consume the query from a Server Component and pass serializable props to any client island.
-5. Verify no any usage and no privileged environment variables are exposed to client code.
+1. Read .github/instructions/portofolio-md/TECHNICAL_GUIDELINES.md Rule 5 and Rule 6 before implementing the query.
+2. Start from generated Supabase Database types and define exact select columns to avoid implicit any.
+3. Keep query implementation in server modules only and do not expose privileged clients in browser bundles.
+4. Map database rows to explicit domain interfaces with nullability and fallback behavior handled intentionally.
+5. Validate call sites in Server Components and remove client read-fetch duplication.

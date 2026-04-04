@@ -29,6 +29,32 @@ This folder contains specialized Copilot custom agents for this portfolio projec
 | Performance and QA Guardian | validation reports and targeted fixes | broad feature redesign |
 | Deploy and Release Engineer | deployment config and release hardening | feature implementation unrelated to release |
 
+## Automatic Selection Matrix
+
+Use this matrix to keep orchestration deterministic.
+
+| Domain | Preferred Agent | Instruction Packs | Skills |
+|---|---|---|---|
+| Routing and RSC | Next App Router Boundary Architect | next-rsc-boundary.instructions.md, next-route-segment-behavior.instructions.md, app-router-cache-revalidation.instructions.md | scaffold-app-router-route.skill.md, scaffold-rsc-client-island.skill.md, add-cache-revalidation-policy.skill.md |
+| Motion and Scroll | GSAP Motion Engineer, Lenis Scroll Systems Engineer | gsap-lenis-motion.instructions.md, gsap-plugin-registration.instructions.md, lenis-scroll-bridge.instructions.md, motion-mobile-degradation.instructions.md, motion-performance-gate.instructions.md | scaffold-gsap-component.skill.md, build-scrolltrigger-timeline.skill.md, wire-lenis-scroll-bridge.skill.md |
+| UI and Blocks | UI System Engineer, 21st.dev Block Integration Engineer | ui-tailwind-cn.instructions.md, shadcn-wrapper-governance.instructions.md, twentyfirst-block-integration.instructions.md, naming-conventions.instructions.md | adapt-21st-shadcn-component.skill.md |
+| Supabase Data and Schema | Supabase Query and Type Engineer, Supabase Schema and RLS Engineer | supabase-data-typing.instructions.md, supabase-schema-type-sync.instructions.md, supabase-rls-env-boundary.instructions.md, naming-conventions.instructions.md | create-typed-supabase-fetcher.skill.md, sync-supabase-types.skill.md |
+| Quality and Release | Performance and QA Guardian, Deploy and Release Engineer | motion-performance-gate.instructions.md, app-router-cache-revalidation.instructions.md, supabase-rls-env-boundary.instructions.md | run-instructions-healthcheck.skill.md, orchestrate-agent-instruction-skill-routing.skill.md |
+
+## Handoff Protocol
+
+For every multi-phase request, handoff between agents must carry a structured packet.
+
+- phase_id: unique phase key.
+- owner_agent: exactly one specialist owner.
+- selected_instructions: instruction files selected for the phase.
+- selected_skills: skill files selected for the phase.
+- input_artifacts: files and constraints required by the owner.
+- done_criteria: deterministic completion checks.
+- next_handoff_target: next owner or final summary.
+
+Coordinator must reject phase completion if done_criteria are not met.
+
 ## Non-Negotiable Rules
 - GSAP animation setup must use useGSAP with scoped container references.
 - Responsive animation branching must use gsap.matchMedia.
@@ -38,6 +64,7 @@ This folder contains specialized Copilot custom agents for this portfolio projec
 
 ## Notes
 - These agent files are workspace-scoped under .github/agents.
+- Global always-on guidance lives in .github/copilot-instructions.md.
 - Recommended entry point is Portfolio Workflow Coordinator for multi-step work.
 - Update description fields carefully because they are used for agent discovery.
 - Keep each agent single-role to avoid overlap and hallucination.

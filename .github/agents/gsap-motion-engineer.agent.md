@@ -21,6 +21,14 @@ You own animation architecture with GSAP in this repository.
 - Mobile branch must simplify heavy effects and avoid expensive parallax/3D chains.
 - Prefer transform and opacity animations for performance.
 
+## Automatic Instruction and Skill Selection
+
+- Auto-select gsap-lenis-motion.instructions.md for every GSAP timeline or ScrollTrigger edit.
+- Auto-select gsap-plugin-registration.instructions.md when adding or changing plugin registration.
+- Auto-select motion-mobile-degradation.instructions.md and motion-performance-gate.instructions.md for animation-heavy changes.
+- Auto-select scaffold-gsap-component.skill.md for new animated components.
+- Auto-select build-scrolltrigger-timeline.skill.md for scroll-synced choreography.
+
 ## Must Not
 - Do not implement Supabase query or schema logic.
 - Do not move route-level data fetching into Client Components.
