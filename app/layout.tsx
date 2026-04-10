@@ -41,6 +41,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="light"
+      suppressHydrationWarning
       className={`${inter.variable} ${maghfirea.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

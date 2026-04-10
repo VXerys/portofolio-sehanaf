@@ -47,3 +47,16 @@ export function BodyText({ children, className }: BaseTypographyProps) {
     </p>
   );
 }
+
+export function LabelText({ children, className }: BaseTypographyProps) {
+  return (
+    <p
+      className={mergeClassName(
+        "font-sans text-xs sm:text-sm uppercase tracking-[0.18em] text-base-content/60",
+        className,
+      )}
+    >
+      {children}
+    </p>
+  );
+}
