@@ -163,7 +163,7 @@ function Project({
 
     if (isActiveTouchItem) {
       setIsTouchPreviewOpen(false);
-      setModal((prev) => ({ ...prev, active: false }));
+      setModal({ active: false, index });
       return;
     }
 
