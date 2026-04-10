@@ -14,6 +14,7 @@ type ProjectItem = {
   localSrc?: string;
   title: string;
   category: string;
+  year: string;
 };
 
 type ModalState = {
@@ -29,6 +30,7 @@ type ProjectProps = {
   setIsTouchPreviewOpen: (value: boolean) => void;
   subtitle: string;
   title: string;
+  year: string;
   setModal: (next: ModalState) => void;
 };
 
@@ -47,6 +49,7 @@ const projects: ProjectItem[] = [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
     title: "VoiceCart",
     category: "AI Voice Commerce",
+    year: "2024",
   },
   {
     color: "#8C8C8C",
@@ -54,6 +57,7 @@ const projects: ProjectItem[] = [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80",
     title: "Fluxa",
     category: "Smart Finance Tracker",
+    year: "2025",
   },
   {
     color: "#EFE8D3",
@@ -61,6 +65,7 @@ const projects: ProjectItem[] = [
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
     title: "Marketiv",
     category: "Creator Marketplace",
+    year: "2025",
   },
   {
     color: "#706D63",
@@ -68,6 +73,7 @@ const projects: ProjectItem[] = [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
     title: "Mangkasir",
     category: "POS Mobile App",
+    year: "2024",
   },
 ];
 
@@ -101,33 +107,6 @@ const touchScaleAnimation = {
   initial: { opacity: 0, scale: 0.92 },
 } as const;
 
-export const Component = () => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className={cn("flex flex-col items-center gap-4 rounded-lg p-4")}>
-      <h1 className="mb-2 text-2xl font-bold">Component Example</h1>
-      <h2 className="text-xl font-semibold">{count}</h2>
-      <div className="flex gap-2">
-        <button
-          className="rounded-md border border-base-300 px-3 py-1"
-          onClick={() => setCount((prev) => prev - 1)}
-          type="button"
-        >
-          -
-        </button>
-        <button
-          className="rounded-md border border-base-300 px-3 py-1"
-          onClick={() => setCount((prev) => prev + 1)}
-          type="button"
-        >
-          +
-        </button>
-      </div>
-    </div>
-  );
-};
-
 function Project({
   index,
   activeIndex,
@@ -136,6 +115,7 @@ function Project({
   setIsTouchPreviewOpen,
   subtitle,
   title,
+  year,
   setModal,
 }: ProjectProps) {
   const isActiveTouchItem = isTouchDevice && isTouchPreviewOpen && activeIndex === index;
@@ -174,20 +154,25 @@ function Project({
   return (
     <button
       className={cn(
-        "group flex w-full cursor-pointer items-center justify-between border-t border-[rgb(201,201,201)] px-6 py-8 text-left transition-all duration-200 last:border-b md:px-[6.25rem] md:py-[3.125rem] hover:opacity-50",
-        isActiveTouchItem && "bg-white/70",
+        "group w-full cursor-pointer border-b border-base-300 px-4 py-6 text-left transition-colors duration-300 first:border-t sm:px-6 sm:py-8 lg:px-4 lg:py-10",
+        isActiveTouchItem && "bg-base-200/60",
       )}
       onClick={handleTouchPreview}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       type="button"
     >
-      <h2 className="m-0 font-display text-3xl font-normal transition-all duration-300 group-hover:translate-x-2.5 md:text-6xl">
-        {title}
-      </h2>
-      <p className="text-xs font-light transition-all duration-300 group-hover:translate-x-2.5 md:text-base">
-        {subtitle}
-      </p>
+      <div className="grid items-start gap-2 sm:items-center md:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)_auto] md:gap-6">
+        <h2 className="m-0 font-display text-[2.25rem] font-normal leading-[1.1] tracking-tight text-base-content transition-transform duration-300 group-hover:translate-x-1 sm:text-5xl md:text-[3.5rem]">
+          {title}
+        </h2>
+        <p className="font-sans text-sm font-normal text-base-content/85 transition-transform duration-300 group-hover:translate-x-1 sm:text-base md:text-[1.75rem] md:leading-tight">
+          {subtitle}
+        </p>
+        <p className="font-sans text-lg font-semibold text-base-content md:text-[2.1rem] md:leading-tight">
+          {year}
+        </p>
+      </div>
     </button>
   );
 }
@@ -371,16 +356,9 @@ export default function ServicesWithAnimatedHoverModal() {
   };
 
   return (
-    <div className="overflow-hidden bg-[#f9f9f9] py-16 text-black">
-      <div className="mx-auto max-w-7xl px-5 md:px-0">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-start">
-          <h2 className="font-display text-5xl tracking-tight md:text-7xl">Services.</h2>
-          <p className="max-w-md text-sm font-medium text-neutral-500 md:text-base">
-            End-to-end products crafted for speed, polish, and conversion. Hover on desktop or tap
-            on mobile to preview each project instantly.
-          </p>
-        </div>
-        <div className="relative mt-8 flex min-h-[70vh] items-center justify-center md:h-screen">
+    <div className="overflow-hidden bg-base-100 py-4 text-base-content sm:py-8">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="relative flex min-h-[55vh] items-center justify-center">
           <div className="flex w-full flex-col items-center justify-center">
             {projects.map((project, index) => (
               <Project
@@ -393,6 +371,7 @@ export default function ServicesWithAnimatedHoverModal() {
                 setModal={setModal}
                 subtitle={project.category}
                 title={project.title}
+                year={project.year}
               />
             ))}
           </div>
