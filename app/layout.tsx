@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import GSAPProvider from "@/components/anim/gsap-provider";
+import LenisProvider from "@/components/anim/lenis-provider";
 import "./globals.css";
 
 const inter = localFont({
@@ -44,7 +46,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${maghfirea.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <GSAPProvider>
+          <LenisProvider>{children}</LenisProvider>
+        </GSAPProvider>
+      </body>
     </html>
   );
 }

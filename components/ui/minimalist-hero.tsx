@@ -21,6 +21,9 @@ interface MinimalistHeroProps {
   socialLinks: { icon: LucideIcon; href: string }[];
   locationText: string;
   className?: string;
+  imageCircleClassName?: string;
+  imageWrapperClassName?: string;
+  imageClassName?: string;
 }
 
 const FALLBACK_IMAGE_SRC =
@@ -57,6 +60,9 @@ export const MinimalistHero = ({
   socialLinks,
   locationText,
   className,
+  imageCircleClassName,
+  imageWrapperClassName,
+  imageClassName,
 }: MinimalistHeroProps) => {
   const [currentImageSrc, setCurrentImageSrc] = useState(imageSrc);
   const hasNavLinks = navLinks.length > 0;
@@ -132,11 +138,14 @@ export const MinimalistHero = ({
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="absolute z-0 h-[300px] w-[300px] rounded-full bg-yellow-400/90 md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]"
+            className={cn(
+              "absolute z-0 h-[300px] w-[300px] rounded-full bg-yellow-400/90 md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]",
+              imageCircleClassName,
+            )}
           />
 
           <motion.div
-            className="relative z-10 w-56 scale-150 md:w-64 lg:w-72"
+            className={cn("relative z-10 w-56 scale-150 md:w-64 lg:w-72", imageWrapperClassName)}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
@@ -147,7 +156,7 @@ export const MinimalistHero = ({
               width={400}
               height={600}
               priority
-              className="h-auto w-full object-cover"
+              className={cn("h-auto w-full object-cover", imageClassName)}
               onError={() => {
                 setCurrentImageSrc(FALLBACK_IMAGE_SRC);
               }}

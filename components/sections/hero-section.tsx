@@ -10,12 +10,15 @@ export default function HeroSection() {
         navLinks={[]}
         mainText="Saya membangun pengalaman digital yang clean, cepat, dan berfokus pada hasil untuk brand dan produk modern."
         readMoreLink="#projects"
-        imageSrc="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80"
+        imageSrc="/images/projects/foto-saya.png"
         imageAlt="Portrait placeholder for hero section"
         overlayText={{
           part1: "less is",
           part2: "more.",
         }}
+        imageCircleClassName="h-[330px] w-[330px] md:h-[470px] md:w-[470px] lg:h-[560px] lg:w-[560px]"
+        imageWrapperClassName="w-[17.5rem] scale-[1.12] md:w-[23rem] md:scale-[1.2] lg:w-[26rem] lg:scale-[1.24]"
+        imageClassName="object-contain object-bottom"
         socialLinks={[]}
         locationText=""
         className="h-[92svh] bg-base-100"
