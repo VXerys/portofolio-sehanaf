@@ -64,6 +64,7 @@ Skill ini memandu proses slicing UI agar konsisten di semua device, dengan prior
 9. Selaraskan styling dengan semantic token.
 - Untuk warna surface, teks, border, dan status gunakan DaisyUI semantic tokens dari app/globals.css seperti bg-base-100, text-base-content, text-primary, dan border-base-300.
 - Hindari hardcoded hex color agar slicing tetap konsisten dengan tema aktif.
+- Untuk tipografi, gunakan Maghfirea pada heading/display hierarchy dan Inter pada body/secondary copy agar konsisten lintas device.
 
 ## Decision Branching
 

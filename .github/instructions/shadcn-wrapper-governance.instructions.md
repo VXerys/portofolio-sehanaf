@@ -14,3 +14,4 @@ applyTo:
 - Keep accessibility semantics from primitives intact while applying visual or motion enhancements.
 - Keep component variants deterministic and token-driven to prevent styling drift.
 - Wrapper variants and responsive slicing states must map to DaisyUI semantic tokens from app/globals.css, such as bg-base-100, text-base-content, text-primary, and border-base-300.
+- Wrapper typography must follow project font policy: Maghfirea for display hierarchy and Inter for readable body content.

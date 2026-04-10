@@ -34,3 +34,4 @@ Do not override these rules.
 3. Include accessibility improvements.
 4. Include responsive checks for key breakpoints.
 5. Ensure color and surface classes use DaisyUI semantic tokens from app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300), not hardcoded hex values.
+6. Ensure typography follows project defaults: Maghfirea for display hierarchy and Inter for body/secondary content via shared theme variables.

@@ -576,6 +576,7 @@ Tailwind & Components:
 ☐ cn() used for ALL dynamic className composition
 ☐ No shadcn/ui files in components/ui/ modified directly
 ☐ No hardcoded color values — use DaisyUI semantic tokens from app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300)
+☐ Typography policy enforced — Maghfirea for display hierarchy and Inter for body/secondary copy via shared theme variables
 
 Data Fetching:
 ☐ All Supabase fetches happen in Server Components (async/await directly)

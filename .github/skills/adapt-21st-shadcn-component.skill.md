@@ -20,5 +20,6 @@ Expected result: component matches design language, uses cn utility consistently
 2. Map incoming primitives to local shadcn wrappers and keep class composition centralized with cn.
 3. Align spacing, typography, and color tokens to existing globals without introducing conflicting one-off patterns.
 4. For color mapping, use DaisyUI semantic tokens from app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300) and avoid hardcoded hex values.
-5. Add semantic markup, focus states, keyboard support, and aria labeling for interactive regions.
-6. Verify responsive behavior and degrade heavy visuals on mobile to keep interaction stable.
+5. For typography mapping, use Maghfirea for display-level heading hierarchy and Inter for body/secondary text via shared theme variables.
+6. Add semantic markup, focus states, keyboard support, and aria labeling for interactive regions.
+7. Verify responsive behavior and degrade heavy visuals on mobile to keep interaction stable.

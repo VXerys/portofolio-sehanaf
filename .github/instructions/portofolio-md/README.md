@@ -100,8 +100,9 @@ portfolio/
 │
 ├── public/
 │   ├── fonts/                              # Self-hosted variable fonts
-│   │   ├── GeneralSans-Variable.woff2      # Primary sans-serif
-│   │   └── ClashDisplay-Variable.woff2     # Display / heading font
+│   │   ├── inter/Inter-VariableFont_opsz,wght.ttf                # Secondary/body variable font
+│   │   ├── inter/Inter-Italic-VariableFont_opsz,wght.ttf         # Secondary/body italic variable font
+│   │   └── maghfirea/Maghfirea.ttf                                 # Primary display font
 │   └── images/
 │       └── profile.jpg                     # Developer portrait (organic mask applied in CSS)
 │
@@ -212,10 +213,33 @@ Re-run this command every time you change the database schema.
 ```tsx
 // app/layout.tsx
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
+import localFont from 'next/font/local'
 import LenisProvider from '@/components/anim/lenis-provider'
 import CustomCursor from '@/components/blocks/custom-cursor'
 import './globals.css'
+
+const inter = localFont({
+  src: [
+    {
+      path: '../public/fonts/inter/Inter-VariableFont_opsz,wght.ttf',
+      style: 'normal',
+      weight: '100 900',
+    },
+    {
+      path: '../public/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf',
+      style: 'italic',
+      weight: '100 900',
+    },
+  ],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const maghfirea = localFont({
+  src: '../public/fonts/maghfirea/Maghfirea.ttf',
+  variable: '--font-maghfirea',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Your Name — Mobile & Web Developer',
@@ -224,7 +248,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={`${inter.variable} ${maghfirea.variable}`}>
       <body className="bg-base-100 text-base-content antialiased cursor-none">
         <LenisProvider>
           <CustomCursor />
@@ -258,6 +282,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```
 
 Gunakan kelas semantik seperti `bg-base-100`, `text-base-content`, `text-primary`, dan `border-base-300` agar slicing konsisten lintas komponen.
+Gunakan Maghfirea sebagai font display utama dan Inter sebagai font secondary/body melalui variabel global di root layout.
 
 ### `next.config.ts`
 

@@ -29,3 +29,4 @@ Do not override these rules.
 3. Provide mobile fallback behavior notes.
 4. Provide a quick QA checklist.
 5. Ensure styling maps to DaisyUI semantic tokens in app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300) and avoids hardcoded hex colors.
+6. Ensure typography mapping uses Maghfirea for display-level headings and Inter for body-level readability.
