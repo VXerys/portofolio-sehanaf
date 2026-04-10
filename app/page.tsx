@@ -5,6 +5,7 @@ import {
   SectionHeading,
 } from "@/components/ui/typography";
 import { CinematicFooter } from "@/components/ui/motion-footer";
+import ServicesWithAnimatedHoverModal from "@/components/ui/services-with-animated-hover-modal";
 
 export default function Home() {
   return (
@@ -67,6 +68,10 @@ export default function Home() {
               The quick brown fox jumps over the lazy dog. Inter dipakai untuk body text dengan
               line-height yang nyaman dibaca pada viewport kecil 320-375 maupun desktop.
             </p>
+          </section>
+
+          <section id="projects" className="overflow-hidden rounded-3xl border border-base-300">
+            <ServicesWithAnimatedHoverModal />
           </section>
         </div>
       </main>
