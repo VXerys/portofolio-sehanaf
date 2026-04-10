@@ -65,6 +65,7 @@ Use this instruction to make orchestration deterministic across custom agents.
   - naming-conventions.instructions.md
 - Skills:
   - adapt-21st-shadcn-component.skill.md
+  - responsive-device-slicing/SKILL.md
 
 ### Supabase Data and Schema
 

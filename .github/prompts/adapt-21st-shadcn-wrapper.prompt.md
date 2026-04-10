@@ -28,3 +28,4 @@ Do not override these rules.
 2. Provide final component code adapted to local patterns.
 3. Provide mobile fallback behavior notes.
 4. Provide a quick QA checklist.
+5. Ensure styling maps to DaisyUI semantic tokens in app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300) and avoids hardcoded hex colors.

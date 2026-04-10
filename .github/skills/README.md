@@ -18,6 +18,10 @@ All skills are designed to enforce constraints from .github/instructions/portofo
 
 - adapt-21st-shadcn-component.skill.md: adapt 21st.dev inspired blocks into local shadcn wrappers and cn patterns.
 
+## Responsive Slicing Skill
+
+- responsive-device-slicing/SKILL.md: enforce mobile-first responsive slicing workflow for any device coverage with touch-safe interaction and overflow prevention.
+
 ## Supabase Skills
 
 - create-typed-supabase-fetcher.skill.md: implement typed Supabase query functions on server paths.

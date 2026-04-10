@@ -41,6 +41,6 @@ Expected result: each phase has one owner agent, explicit instruction selection,
 
 - Routing and RSC: audit-rsc-client-boundary.prompt.md, refactor-to-rsc-island.prompt.md, next-rsc-boundary.instructions.md, next-route-segment-behavior.instructions.md, scaffold-app-router-route.skill.md, scaffold-rsc-client-island.skill.md
 - Motion and Scroll: audit-gsap-performance-safety.prompt.md, audit-lenis-scroll-bridge.prompt.md, gsap-lenis-motion.instructions.md, lenis-scroll-bridge.instructions.md, scaffold-gsap-component.skill.md, build-scrolltrigger-timeline.skill.md, wire-lenis-scroll-bridge.skill.md
-- UI and Blocks: standardize-ui-tailwind-cn.prompt.md, adapt-21st-shadcn-wrapper.prompt.md, ui-tailwind-cn.instructions.md, twentyfirst-block-integration.instructions.md, adapt-21st-shadcn-component.skill.md
+- UI and Blocks: standardize-ui-tailwind-cn.prompt.md, adapt-21st-shadcn-wrapper.prompt.md, ui-tailwind-cn.instructions.md, twentyfirst-block-integration.instructions.md, adapt-21st-shadcn-component.skill.md, responsive-device-slicing/SKILL.md
 - Supabase Data and Schema: enforce-supabase-type-safety.prompt.md, review-cache-revalidation.prompt.md, supabase-data-typing.instructions.md, supabase-schema-type-sync.instructions.md, create-typed-supabase-fetcher.skill.md, sync-supabase-types.skill.md
 - Quality and Release: strict-portfolio-pr-review.prompt.md, run-customization-healthcheck.prompt.md, motion-performance-gate.instructions.md, run-instructions-healthcheck.skill.md

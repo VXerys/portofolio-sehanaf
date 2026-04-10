@@ -15,7 +15,7 @@ This is an **Awwwards/FWA-calibre** developer portfolio built on the Next.js 15 
 | **Bold Typography First** | Massive viewport-filling type as the primary visual element, not decoration |
 | **Motion with Purpose** | Every GSAP animation has a narrative reason — it reveals, guides, or rewards |
 | **60fps Guarantee** | GSAP + `will-change`, `transform` only, `gsap.matchMedia()` for mobile degradation |
-| **Light Mode Organic** | Off-white base (`#F5F2EE`), ink-dark text (`#0A0A0A`), warm accent (`#FF4D00`) |
+| **DaisyUI Semantic Theme** | Use semantic tokens from `app/globals.css` (e.g. `bg-base-100`, `text-base-content`, `text-primary`, `border-base-300`) |
 | **Progressive Disclosure** | Content reveals as the user scrolls — never overwhelm on first paint |
 
 ### Architecture at a Glance
@@ -225,7 +225,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body className="bg-[#F5F2EE] text-[#0A0A0A] antialiased cursor-none">
+      <body className="bg-base-100 text-base-content antialiased cursor-none">
         <LenisProvider>
           <CustomCursor />
           {children}
@@ -240,40 +240,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ## 4. Environment & Config
 
-### `tailwind.config.ts` — Extended Theme
+### `app/globals.css` — DaisyUI Semantic Theme Source
 
-```ts
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
-  darkMode: ['class'],
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['var(--font-general-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-clash-display)', 'system-ui', 'sans-serif'],
-      },
-      colors: {
-        background: '#F5F2EE',
-        foreground: '#0A0A0A',
-        accent: '#FF4D00',
-        muted: '#A8A29E',
-        border: '#E7E5E4',
-      },
-      fontSize: {
-        // Fluid type scale for massive hero text
-        'fluid-hero': 'clamp(4rem, 12vw, 14rem)',
-        'fluid-xl': 'clamp(2rem, 6vw, 7rem)',
-        'fluid-lg': 'clamp(1.5rem, 4vw, 4rem)',
-      },
-    },
-  },
-  plugins: [require('tailwindcss-animate')],
+```css
+@plugin "daisyui" {
+  themes: light --default;
 }
 
-export default config
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-base-100: oklch(96.96% 0.016 293.756);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: oklch(71.772% 0.133 239.443);
+  --color-border-base-300: oklch(87.61% 0.006 286.286);
+}
 ```
+
+Gunakan kelas semantik seperti `bg-base-100`, `text-base-content`, `text-primary`, dan `border-base-300` agar slicing konsisten lintas komponen.
 
 ### `next.config.ts`
 

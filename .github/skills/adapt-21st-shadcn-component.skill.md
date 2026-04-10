@@ -19,5 +19,6 @@ Expected result: component matches design language, uses cn utility consistently
 1. Read .github/instructions/portofolio-md/TECHNICAL_GUIDELINES.md Rule 4 and Rule 7 before adapting the block.
 2. Map incoming primitives to local shadcn wrappers and keep class composition centralized with cn.
 3. Align spacing, typography, and color tokens to existing globals without introducing conflicting one-off patterns.
-4. Add semantic markup, focus states, keyboard support, and aria labeling for interactive regions.
-5. Verify responsive behavior and degrade heavy visuals on mobile to keep interaction stable.
+4. For color mapping, use DaisyUI semantic tokens from app/globals.css (for example bg-base-100, text-base-content, text-primary, border-base-300) and avoid hardcoded hex values.
+5. Add semantic markup, focus states, keyboard support, and aria labeling for interactive regions.
+6. Verify responsive behavior and degrade heavy visuals on mobile to keep interaction stable.
