@@ -6,13 +6,15 @@ import {
 } from "@/components/ui/typography";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 import ServicesWithAnimatedHoverModal from "@/components/ui/services-with-animated-hover-modal";
+import CurvedMenu from "@/components/ui/curved-menu";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-base-100">
+      <CurvedMenu />
       <main className="relative z-10 min-h-[120vh] w-full rounded-b-3xl border-b border-base-300/40 bg-base-100 px-4 py-8 shadow-2xl sm:px-8 sm:py-12 lg:px-12 lg:py-14">
         <div className="mx-auto w-full max-w-6xl space-y-6 sm:space-y-8">
-          <section className="rounded-3xl border border-base-300 bg-gradient-to-br from-base-200 to-base-100 p-6 sm:p-10 lg:p-14">
+          <section id="home" className="rounded-3xl border border-base-300 bg-gradient-to-br from-base-200 to-base-100 p-6 sm:p-10 lg:p-14">
             <LabelText>Theme + Font Showcase</LabelText>
             <DisplayHeading className="mt-3 text-primary">
               M. Sechan Alfarisi
@@ -30,7 +32,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="grid gap-4 sm:gap-5 lg:grid-cols-3">
+          <section id="about" className="grid gap-4 sm:gap-5 lg:grid-cols-3">
             <article className="rounded-2xl border border-base-300 bg-base-200/50 p-5 sm:p-6">
               <LabelText>Display</LabelText>
               <SectionHeading className="mt-2 text-primary">Creative Heading</SectionHeading>
@@ -56,7 +58,7 @@ export default function Home() {
             </article>
           </section>
 
-          <section className="rounded-3xl border border-base-300 bg-base-100 p-6 sm:p-8">
+          <section id="experience" className="rounded-3xl border border-base-300 bg-base-100 p-6 sm:p-8">
             <LabelText>Typography Scale Check</LabelText>
             <h1 className="mt-4 font-display text-4xl leading-tight text-base-content sm:text-5xl lg:text-6xl">
               Heading H1 Display Scale
@@ -76,7 +78,9 @@ export default function Home() {
         </div>
       </main>
 
-      <CinematicFooter />
+      <section id="contact">
+        <CinematicFooter />
+      </section>
     </div>
   );
 }

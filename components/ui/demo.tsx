@@ -1,7 +1,19 @@
 "use client";
 
-import ServicesWithAnimatedHoverModal from "@/components/ui/services-with-animated-hover-modal";
+import CurvedMenu from "@/components/ui/curved-menu";
 
-export default function Demo() {
-  return <ServicesWithAnimatedHoverModal />;
-}
+const DemoOne = () => {
+  return (
+    <div className="min-h-screen bg-black">
+      <CurvedMenu />
+      <div className="flex h-screen items-center justify-center text-center text-7xl text-white">
+        hello
+        <span className="italic">!</span>
+      </div>
+    </div>
+  );
+};
+
+export { DemoOne };
+
+export default DemoOne;
