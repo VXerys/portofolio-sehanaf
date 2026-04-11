@@ -3,6 +3,7 @@ import ServicesWithAnimatedHoverModal from "@/components/ui/services-with-animat
 import CurvedMenu from "@/components/ui/curved-menu";
 import HomePreloaderGate from "@/components/ui/home-preloader-gate";
 import HeroSection from "@/components/sections/hero-section";
+import ProgressiveBlurSeparator from "@/components/sections/progressive-blur-separator";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <CurvedMenu />
         <main className="relative z-10 w-full bg-base-100 pb-10 sm:pb-14">
           <HeroSection />
+          <ProgressiveBlurSeparator />
 
           <div className="mx-auto w-full max-w-6xl px-4 pt-6 sm:px-8 sm:pt-8 lg:px-12">
             <section id="projects">
