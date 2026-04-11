@@ -103,7 +103,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
-            <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} fill="#070b13" />
+            <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} fill="#000000" />
           </svg>
         </>
       )}

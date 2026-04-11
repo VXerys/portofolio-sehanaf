@@ -2,6 +2,7 @@ import { CinematicFooter } from "@/components/ui/motion-footer";
 import ServicesWithAnimatedHoverModal from "@/components/ui/services-with-animated-hover-modal";
 import CurvedMenu from "@/components/ui/curved-menu";
 import HomePreloaderGate from "@/components/ui/home-preloader-gate";
+import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import HeroSection from "@/components/sections/hero-section";
 import ProgressiveBlurSeparator from "@/components/sections/progressive-blur-separator";
 
@@ -24,6 +25,8 @@ export default function Home() {
         <section id="contact">
           <CinematicFooter />
         </section>
+
+        <FloatingConsultButton />
       </div>
     </HomePreloaderGate>
   );

@@ -48,8 +48,16 @@ const logos: LogoItem[] = [
 
 export function LogosSlider() {
   const [failedLogos, setFailedLogos] = useState<string[]>([]);
+  const REPEAT_SETS = 6;
 
   const failedSet = useMemo(() => new Set(failedLogos), [failedLogos]);
+  const repeatedLogos = useMemo(
+    () =>
+      Array.from({ length: REPEAT_SETS }, (_, repeatIndex) =>
+        logos.map((logo) => ({ ...logo, repeatIndex })),
+      ).flat(),
+    [REPEAT_SETS],
+  );
 
   const handleImageError = (id: string) => {
     setFailedLogos((prev) => (prev.includes(id) ? prev : [...prev, id]));
@@ -58,12 +66,12 @@ export function LogosSlider() {
   return (
     <div className="relative h-[100px] w-full overflow-hidden border-y border-base-300 bg-base-100">
       <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={48}>
-        {logos.map((logo) => {
+        {repeatedLogos.map((logo) => {
           const Icon = logo.fallbackIcon;
           const hasFailed = failedSet.has(logo.id);
 
           return (
-            <div key={logo.id} className="flex w-32 items-center justify-center">
+            <div key={`${logo.id}-${logo.repeatIndex}`} className="flex w-32 items-center justify-center">
               {hasFailed ? (
                 <span
                   aria-label={logo.description}
