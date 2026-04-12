@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useId, useMemo, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Sparkles, X } from "lucide-react";
@@ -45,23 +45,26 @@ export function FloatingConsultButton({
 }: FloatingConsultButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showPendingMessage, setShowPendingMessage] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    return window.matchMedia("(min-width: 1024px)").matches;
-  });
   const [imageHasError, setImageHasError] = useState(false);
   const circlePathId = useId();
 
-  const lgButtonSize = buttonSize || 160;
-  const smButtonSize = buttonSize ? buttonSize * 0.8 : 128;
-  const lgImageSize = imageSize || 96;
-  const smImageSize = imageSize ? imageSize * 0.833 : 80;
+  const desktopButtonSize = buttonSize || 152;
+  const tabletButtonSize = Math.round(desktopButtonSize * 0.84);
+  const mobileButtonSize = Math.round(desktopButtonSize * 0.72);
 
-  const resolvedButtonSize = isDesktop ? lgButtonSize : smButtonSize;
-  const resolvedImageSize = isDesktop ? lgImageSize : smImageSize;
+  const desktopImageSize = imageSize || 92;
+  const tabletImageSize = Math.round(desktopImageSize * 0.86);
+  const mobileImageSize = Math.round(desktopImageSize * 0.74);
+
+  const wrapperStyle: CSSProperties = {
+    ...position,
+    "--floating-btn-mobile": `${mobileButtonSize}px`,
+    "--floating-btn-tablet": `${tabletButtonSize}px`,
+    "--floating-btn-desktop": `${desktopButtonSize}px`,
+    "--floating-img-mobile": `${mobileImageSize}px`,
+    "--floating-img-tablet": `${tabletImageSize}px`,
+    "--floating-img-desktop": `${desktopImageSize}px`,
+  };
 
   const suggestedPrompts = useMemo(
     () => [
@@ -71,19 +74,6 @@ export function FloatingConsultButton({
     ],
     [],
   );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      setIsDesktop(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleMediaChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaChange);
-    };
-  }, []);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -190,13 +180,12 @@ export function FloatingConsultButton({
         )}
       </AnimatePresence>
 
-      <div className="fixed z-[45]" style={position}>
+      <div className="fixed z-[45]" style={wrapperStyle}>
         <motion.button
           type="button"
           aria-expanded={isOpen}
           aria-label="Open Chat AI popup"
-          className="relative cursor-pointer"
-          style={{ width: `${resolvedButtonSize}px`, height: `${resolvedButtonSize}px` }}
+          className="relative h-[var(--floating-btn-mobile)] w-[var(--floating-btn-mobile)] cursor-pointer sm:h-[var(--floating-btn-tablet)] sm:w-[var(--floating-btn-tablet)] lg:h-[var(--floating-btn-desktop)] lg:w-[var(--floating-btn-desktop)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
           transition={{ duration: 0.25 }}
@@ -221,7 +210,10 @@ export function FloatingConsultButton({
                   d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
                 />
               </defs>
-              <text className="text-[18.8px] font-semibold uppercase tracking-[0.24em]" fill="currentColor">
+              <text
+                className="[font-size:11.2px] font-semibold uppercase tracking-[0.14em] sm:[font-size:13.1px] sm:tracking-[0.17em] lg:[font-size:15.2px] lg:tracking-[0.2em]"
+                fill="currentColor"
+              >
                 <textPath href={`#${circlePathId}`} startOffset="0%">
                   {revolvingText}
                 </textPath>
@@ -231,8 +223,7 @@ export function FloatingConsultButton({
 
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="relative overflow-hidden rounded-full border border-base-300 bg-base-content shadow-xl transition-shadow duration-300 hover:shadow-2xl"
-              style={{ width: `${resolvedImageSize}px`, height: `${resolvedImageSize}px` }}
+              className="relative h-[var(--floating-img-mobile)] w-[var(--floating-img-mobile)] overflow-hidden rounded-full border border-base-300 bg-base-content shadow-xl transition-shadow duration-300 hover:shadow-2xl sm:h-[var(--floating-img-tablet)] sm:w-[var(--floating-img-tablet)] lg:h-[var(--floating-img-desktop)] lg:w-[var(--floating-img-desktop)]"
             >
               {imageHasError ? (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-secondary text-primary-content">

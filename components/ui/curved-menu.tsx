@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue } from "framer-motion";
-import { GitFork, Globe, Palette, PenTool } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export interface CurvedMenuNavItem {
   heading: string;
@@ -28,6 +28,29 @@ interface CurvedMenuProps {
   navItems?: CurvedMenuNavItem[];
   footer?: React.ReactNode;
 }
+
+const SOCIAL_LINKS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com",
+    iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com",
+    iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg",
+  },
+  {
+    label: "Dribbble",
+    href: "https://dribbble.com",
+    iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/dribbble.svg",
+  },
+  {
+    label: "Figma",
+    href: "https://www.figma.com",
+    iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg",
+  },
+] as const;
 
 const MENU_SLIDE_ANIMATION = {
   initial: { x: "calc(100% + 100px)" },
@@ -78,19 +101,26 @@ export const defaultCurvedMenuItems: CurvedMenuNavItem[] = [
 
 const CustomFooter = () => {
   return (
-    <div className="flex w-full justify-between px-10 py-5 text-sm text-base-content md:px-24">
-      <a href="https://example.com/linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <Globe size={24} />
-      </a>
-      <a href="https://example.com/github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <GitFork size={24} />
-      </a>
-      <a href="https://example.com/dribbble" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
-        <Palette size={24} />
-      </a>
-      <a href="https://example.com/figma" target="_blank" rel="noopener noreferrer" aria-label="Figma">
-        <PenTool size={24} />
-      </a>
+    <div className="flex w-full items-center justify-between border-t border-base-content/25 px-10 py-5 text-sm text-base-content md:px-24">
+      {SOCIAL_LINKS.map((socialLink) => (
+        <a
+          key={socialLink.label}
+          href={socialLink.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={socialLink.label}
+          className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-base-content/20 bg-base-100/45 transition-colors hover:border-base-content/50"
+        >
+          <Image
+            src={socialLink.iconUrl}
+            alt={`${socialLink.label} logo`}
+            width={18}
+            height={18}
+            className="opacity-80 transition-opacity group-hover:opacity-100"
+            unoptimized
+          />
+        </a>
+      ))}
     </div>
   );
 };
@@ -222,7 +252,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer }: CurvedNavbarProps) => {
       <div className="flex h-full flex-col justify-between pt-11">
         <div className="mt-0 flex flex-col gap-3 px-10 text-5xl md:px-24">
           <div className="mb-0 border-b border-base-content/30 text-sm uppercase text-base-content">
-            <p>Navigation</p>
+            <p>Explore Portfolio</p>
           </div>
           <section className="mt-0 bg-transparent">
             <div className="mx-auto max-w-7xl">
@@ -253,29 +283,21 @@ export default function CurvedMenu({ navItems = defaultCurvedMenuItems, footer =
           type="button"
           onClick={handleClick}
           aria-expanded={isActive}
-          aria-label="Toggle navigation menu"
-          className="fixed -right-1 top-0 z-50 m-5 flex h-12 w-12 cursor-pointer items-center justify-center rounded-none bg-base-100 md:-right-1"
+          aria-label={isActive ? "Close navigation menu" : "Open navigation menu"}
+          className="fixed right-4 top-4 z-[60] grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-base-content/20 bg-base-100/65 text-base-content backdrop-blur-sm transition-colors duration-300 hover:bg-base-100/80 md:right-5 md:top-5"
         >
-          <div className="relative flex h-6 w-8 flex-col items-center justify-between">
-            <span
-              className={cn(
-                "block h-1 w-7 bg-base-content transition-transform duration-300",
-                isActive && "translate-y-2 rotate-45",
-              )}
-            />
-            <span
-              className={cn(
-                "block h-1 w-7 bg-base-content transition-opacity duration-300",
-                isActive && "opacity-0",
-              )}
-            />
-            <span
-              className={cn(
-                "block h-1 w-7 bg-base-content transition-transform duration-300",
-                isActive && "-translate-y-3 -rotate-45",
-              )}
-            />
-          </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={isActive ? "close" : "menu"}
+              initial={{ opacity: 0, rotate: -60, scale: 0.8 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 60, scale: 0.8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="inline-flex"
+            >
+              {isActive ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </motion.span>
+          </AnimatePresence>
         </button>
       </div>
 
