@@ -229,9 +229,12 @@ const MarqueeItem = () => (
 
 export function CinematicFooter() {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const auroraRef = useRef<HTMLDivElement>(null);
+  const marqueeBandRef = useRef<HTMLDivElement>(null);
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const ctaClusterRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -242,36 +245,90 @@ export function CinematicFooter() {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        const revealTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "top 96%",
+            once: true,
+          },
+        });
+
+        revealTimeline
+          .fromTo(
+            giantTextRef.current,
+            { y: 140, scale: 0.86, opacity: 0 },
+            {
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 1.2,
+              ease: "power3.out",
+            },
+          )
+          .fromTo(
+            headingRef.current,
+            { y: 68, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.95,
+              ease: "power3.out",
+            },
+            "-=0.8",
+          )
+          .fromTo(
+            linksRef.current,
+            { y: 48, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: "power2.out",
+            },
+            "-=0.65",
+          )
+          .fromTo(
+            ctaClusterRef.current,
+            { y: 28, scale: 0.94, opacity: 0 },
+            {
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 0.72,
+              ease: "back.out(1.2)",
+            },
+            "-=0.45",
+          );
+
         gsap.fromTo(
-          giantTextRef.current,
-          { y: 80, scale: 0.94, opacity: 0 },
+          auroraRef.current,
+          { yPercent: 16, scale: 0.9, opacity: 0.45 },
           {
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
+            yPercent: -12,
+            scale: 1.12,
+            opacity: 0.94,
+            ease: "none",
             scrollTrigger: {
               trigger: wrapperRef.current,
-              start: "top 88%",
-              once: true,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.8,
             },
           },
         );
 
         gsap.fromTo(
-          [headingRef.current, linksRef.current],
-          { y: 36, opacity: 0 },
+          marqueeBandRef.current,
+          { y: 20, opacity: 0.5 },
           {
-            y: 0,
+            y: -16,
             opacity: 1,
-            duration: 0.9,
-            stagger: 0.12,
-            ease: "power3.out",
+            ease: "none",
             scrollTrigger: {
               trigger: wrapperRef.current,
-              start: "top 82%",
-              once: true,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.8,
             },
           },
         );
@@ -279,17 +336,50 @@ export function CinematicFooter() {
 
       mm.add("(max-width: 767px), (prefers-reduced-motion: reduce)", () => {
         gsap.fromTo(
+          giantTextRef.current,
+          { y: 72, scale: 0.9, opacity: 0 },
+          {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.72,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: wrapperRef.current,
+              start: "top 96%",
+              once: true,
+            },
+          },
+        );
+
+        gsap.fromTo(
           [headingRef.current, linksRef.current],
-          { y: 20, opacity: 0 },
+          { y: 34, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.5,
-            stagger: 0.08,
+            duration: 0.62,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: wrapperRef.current,
+              start: "top 94%",
+              once: true,
+            },
+          },
+        );
+
+        gsap.fromTo(
+          auroraRef.current,
+          { opacity: 0.5, scale: 0.96 },
+          {
+            opacity: 0.82,
+            scale: 1,
+            duration: 0.6,
             ease: "power2.out",
             scrollTrigger: {
               trigger: wrapperRef.current,
-              start: "top 90%",
+              start: "top 92%",
               once: true,
             },
           },
@@ -330,7 +420,10 @@ export function CinematicFooter() {
             }}
           />
 
-          <div className="footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[50vh] w-[74vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[40px]" />
+          <div
+            ref={auroraRef}
+            className="footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[50vh] w-[74vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[40px] will-change-transform"
+          />
           <div className="footer-bg-grid pointer-events-none absolute inset-0 z-0" />
 
           <div
@@ -340,7 +433,10 @@ export function CinematicFooter() {
             SEHAN
           </div>
 
-          <div className="absolute left-0 top-12 z-10 w-full -rotate-2 scale-105 overflow-hidden border-y border-base-300/50 bg-base-100/55 py-4 shadow-lg">
+          <div
+            ref={marqueeBandRef}
+            className="absolute left-0 top-12 z-10 w-full -rotate-2 scale-105 overflow-hidden border-y border-base-300/50 bg-base-100/55 py-4 shadow-lg will-change-transform"
+          >
             <div className="animate-footer-scroll-marquee flex w-max text-xs font-bold uppercase tracking-[0.3em] text-base-content/65 md:text-sm">
               <MarqueeItem />
               <MarqueeItem />
@@ -356,7 +452,7 @@ export function CinematicFooter() {
             </h2>
 
             <div ref={linksRef} className="flex w-full flex-col items-center gap-6">
-              <div className="flex w-full flex-wrap justify-center gap-4">
+              <div className="flex w-full flex-wrap justify-center gap-4 md:gap-5">
                 <MagneticButton
                   as="a"
                   href="/#projects"
@@ -376,27 +472,30 @@ export function CinematicFooter() {
                 </MagneticButton>
               </div>
 
-              <div className="mt-2 flex w-full flex-wrap justify-center gap-3 md:gap-6">
+              <div
+                ref={ctaClusterRef}
+                className="mt-2 grid w-full max-w-3xl grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center md:gap-6"
+              >
                 <MagneticButton
                   as="a"
-                  href="/#projects"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-base-content/65 hover:text-base-content md:text-sm"
+                  href="/#about"
+                  className="footer-glass-pill rounded-full px-6 py-3 text-center text-xs font-medium text-base-content/65 hover:text-base-content md:text-sm"
                 >
-                  Selected Works
+                  About Me
                 </MagneticButton>
                 <MagneticButton
                   as="a"
-                  href="/#contact"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-base-content/65 hover:text-base-content md:text-sm"
+                  href="/#experience"
+                  className="footer-glass-pill rounded-full px-6 py-3 text-center text-xs font-medium text-base-content/65 hover:text-base-content md:text-sm"
                 >
-                  Contact
+                  Experience
                 </MagneticButton>
                 <MagneticButton
                   as="a"
                   href="https://github.com/VXerys"
                   target="_blank"
                   rel="noreferrer"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-base-content/65 hover:text-base-content md:text-sm"
+                  className="footer-glass-pill col-span-2 rounded-full px-6 py-3 text-center text-xs font-medium text-base-content/65 hover:text-base-content md:col-span-1 md:text-sm"
                 >
                   GitHub
                 </MagneticButton>

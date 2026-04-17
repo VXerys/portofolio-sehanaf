@@ -65,7 +65,7 @@ export function LogosSlider() {
 
   return (
     <div className="relative h-[100px] w-full overflow-hidden border-y border-base-300 bg-base-100">
-      <InfiniteSlider className="flex h-full w-full items-center" duration={30} gap={48}>
+      <InfiniteSlider className="flex h-full w-full items-center" duration={45} gap={48}>
         {repeatedLogos.map((logo) => {
           const Icon = logo.fallbackIcon;
           const hasFailed = failedSet.has(logo.id);

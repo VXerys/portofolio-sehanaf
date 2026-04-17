@@ -280,7 +280,7 @@ function Modal({
     <>
       <motion.div
         animate={active ? "enter" : "closed"}
-        className="pointer-events-none fixed left-0 top-0 z-[4] flex h-[21.875rem] w-[25rem] items-center justify-center overflow-hidden bg-white"
+        className="pointer-events-none fixed left-0 top-0 z-[4] flex h-[19.5rem] w-[19.5rem] items-center justify-center overflow-hidden bg-white"
         initial="initial"
         ref={modalContainer}
         variants={scaleAnimation}

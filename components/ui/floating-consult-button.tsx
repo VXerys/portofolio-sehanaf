@@ -33,7 +33,7 @@ export function FloatingConsultButton({
   imageSize,
   imageSrc = "/images/projects/foto-saya.png",
   imageAlt = "Foto profile Sehanaf",
-  revolvingText = "GET IN TOUCH - CHAT AI - LET'S TALK - ",
+  revolvingText = "GET IN TOUCH",
   revolvingSpeed = 10,
   popupHeading = "Chat AI Sehanaf",
   popupDescription =
@@ -47,6 +47,8 @@ export function FloatingConsultButton({
   const [showPendingMessage, setShowPendingMessage] = useState(false);
   const [imageHasError, setImageHasError] = useState(false);
   const circlePathId = useId();
+  const circleRadius = 78;
+  const circleCircumference = Math.round(2 * Math.PI * circleRadius);
 
   const desktopButtonSize = buttonSize || 152;
   const tabletButtonSize = Math.round(desktopButtonSize * 0.84);
@@ -56,7 +58,7 @@ export function FloatingConsultButton({
   const tabletImageSize = Math.round(desktopImageSize * 0.86);
   const mobileImageSize = Math.round(desktopImageSize * 0.74);
 
-  const wrapperStyle: CSSProperties = {
+  const wrapperStyle = {
     ...position,
     "--floating-btn-mobile": `${mobileButtonSize}px`,
     "--floating-btn-tablet": `${tabletButtonSize}px`,
@@ -64,7 +66,7 @@ export function FloatingConsultButton({
     "--floating-img-mobile": `${mobileImageSize}px`,
     "--floating-img-tablet": `${tabletImageSize}px`,
     "--floating-img-desktop": `${desktopImageSize}px`,
-  };
+  } as CSSProperties;
 
   const suggestedPrompts = useMemo(
     () => [
@@ -74,6 +76,11 @@ export function FloatingConsultButton({
     ],
     [],
   );
+
+  const circularText = useMemo(() => {
+    const normalizedText = revolvingText.trim().replace(/\s+/g, " ");
+    return (normalizedText || "GET IN TOUCH").toUpperCase();
+  }, [revolvingText]);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -207,15 +214,21 @@ export function FloatingConsultButton({
               <defs>
                 <path
                   id={circlePathId}
-                  d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+                  d={`M 100, 100 m -${circleRadius}, 0 a ${circleRadius},${circleRadius} 0 1,1 ${circleRadius * 2},0 a ${circleRadius},${circleRadius} 0 1,1 -${circleRadius * 2},0`}
                 />
               </defs>
               <text
-                className="[font-size:11.2px] font-semibold uppercase tracking-[0.14em] sm:[font-size:13.1px] sm:tracking-[0.17em] lg:[font-size:15.2px] lg:tracking-[0.2em]"
+                className="[font-size:11px] font-semibold uppercase tracking-[0.11em] sm:[font-size:12.5px] sm:tracking-[0.13em] lg:[font-size:14px] lg:tracking-[0.15em]"
                 fill="currentColor"
+                textAnchor="middle"
               >
-                <textPath href={`#${circlePathId}`} startOffset="0%">
-                  {revolvingText}
+                <textPath
+                  href={`#${circlePathId}`}
+                  startOffset="50%"
+                  textLength={circleCircumference}
+                  lengthAdjust="spacing"
+                >
+                  {circularText}
                 </textPath>
               </text>
             </svg>
