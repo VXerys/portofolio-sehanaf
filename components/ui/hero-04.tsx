@@ -25,9 +25,9 @@ export function HeroSection04() {
           <div className="space-y-8 pt-20 flex gap-6 justify-center">
             <div className="flex gap-6 bg-base-200 text-base-content w-full max-w-xl h-fit p-10 items-end space-y-2 text-xl font-bold md:text-2xl lg:text-3xl">
               <div className="font-semibold text-xl">
-                <div>/ WEB DEVELOPMENT</div>
-                <div>/ UI/UX DESIGN</div>
-                <div>/ AI SOLUTIONS</div>
+                <div>/ MOBILE DEVELOPMENT</div>
+                <div>/ DIGITAL PRODUCTS</div>
+                <div>/ AI-DRIVEN SOLUTIONS</div>
               </div>
               <div className="absolute hidden  md:flex left-1/2 -top-10 w-fit overflow-hidden bg-base-200">
                 <img
@@ -54,12 +54,16 @@ export function HeroSection04() {
         </div>
 
         <div className="md:mt-40 mt-10">
-          <p className="mx-auto max-w-2xl font-mono text-center text-sm font-medium tracking-wide md:text-base">
-            I'M A CREATIVE DEVELOPER & UI/UX DESIGNER,
-            <br />
-            BUILDING HIGH-PERFORMANCE DIGITAL 
-            <br />
-            EXPERIENCES AND AI SOLUTIONS
+          <p className="mx-auto max-w-2xl font-mono text-center text-sm font-medium tracking-wide md:text-base leading-relaxed uppercase">
+            I'M A MOBILE DEVELOPER AND TECH ENTHUASIAST FOCUSED ON
+            <br className="hidden md:block" />
+            BRINGING DIGITAL PRODUCTS TO LIFE, fROM ZERO TO LAUNCH.
+            <br className="hidden md:block" />
+            I COMBINE CLEAN DEVELOPMENT PRACTICES, INTUITIVE DESIGN,
+            <br className="hidden md:block" />
+            AND SMART AI SOLUTIONS TO BUILD HIGH-PERFORMANCE
+            <br className="hidden md:block" />
+            APPLICATIONS THAT TRULLY STAND OUT.
           </p>
         </div>
         <div className="flex justify-center pt-6">
