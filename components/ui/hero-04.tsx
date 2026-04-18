@@ -2,10 +2,12 @@
 import React from "react";
 import { ArrowDownRight } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
+import { InfiniteGrid } from "@/components/ui/infinite-grid-integration";
   
 export function HeroSection04() {
   return (
     <section className="min-h-[85vh] overflow-hidden relative pt-20 pb-2">
+      <InfiniteGrid />
       <div className="mx-auto max-w-7xl relative z-20 px-6">
         <div className="relative ">
           <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
@@ -112,101 +114,6 @@ export function HeroSection04() {
           </div>
         </div>
       </div>
-      <div
-        className="absolute block dark:hidden inset-0 z-0"
-        style={{
-          backgroundImage: `
-        linear-gradient(to right, #e5e5e5 1px, transparent 1px),
-        linear-gradient(to bottom, #e5e5e5 1px, transparent 1px)
-      `,
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 0",
-          maskImage: `
-        repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-      `,
-          WebkitMaskImage: `
- repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-      `,
-          maskComposite: "intersect",
-          WebkitMaskComposite: "source-in",
-        }}
-      />
-
-      <div
-        className="absolute hidden dark:block inset-0 z-0"
-        style={{
-          backgroundImage: `
-        linear-gradient(to right, #404040 1px, transparent 1px),
-        linear-gradient(to bottom, #404040 1px, transparent 1px)
-      `,
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 0",
-          maskImage: `
-        repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-      `,
-          WebkitMaskImage: `
- repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-      `,
-          maskComposite: "intersect",
-          WebkitMaskComposite: "source-in",
-        }}
-      />
     </section>
   );
 }
