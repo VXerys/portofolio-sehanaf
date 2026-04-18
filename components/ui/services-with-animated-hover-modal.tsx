@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useResponsive } from "@/hooks/use-responsive";
 
 type ProjectItem = {
   color: string;
@@ -328,27 +329,14 @@ function Modal({
 
 export default function ServicesWithAnimatedHoverModal() {
   const [modal, setModal] = useState<ModalState>({ active: false, index: 0 });
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const { isTouchDevice } = useResponsive();
   const [isTouchPreviewOpen, setIsTouchPreviewOpen] = useState(false);
 
   useEffect(() => {
-    const desktopPointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-    const updateTouchDevice = () => {
-      const hasDesktopPointer = desktopPointerQuery.matches;
-      setIsTouchDevice(!hasDesktopPointer);
-      if (hasDesktopPointer) {
-        setIsTouchPreviewOpen(false);
-      }
-    };
-
-    updateTouchDevice();
-    desktopPointerQuery.addEventListener("change", updateTouchDevice);
-
-    return () => {
-      desktopPointerQuery.removeEventListener("change", updateTouchDevice);
-    };
-  }, []);
+    if (!isTouchDevice) {
+      setIsTouchPreviewOpen(false);
+    }
+  }, [isTouchDevice]);
 
   const closeTouchPreview = () => {
     setIsTouchPreviewOpen(false);
