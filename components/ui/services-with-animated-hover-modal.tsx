@@ -48,7 +48,7 @@ const projects: ProjectItem[] = [
     remoteSrc:
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
     title: "VoiceCart",
-    category: "AI Voice Commerce",
+    category: "AI Integration",
     year: "2024",
   },
   {
@@ -56,7 +56,7 @@ const projects: ProjectItem[] = [
     remoteSrc:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80",
     title: "Fluxa",
-    category: "Smart Finance Tracker",
+    category: "Web Development",
     year: "2025",
   },
   {
@@ -64,7 +64,7 @@ const projects: ProjectItem[] = [
     remoteSrc:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
     title: "Marketiv",
-    category: "Creator Marketplace",
+    category: "Web Development",
     year: "2025",
   },
   {
@@ -72,7 +72,7 @@ const projects: ProjectItem[] = [
     remoteSrc:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
     title: "Mangkasir",
-    category: "POS Mobile App",
+    category: "UI/UX Design",
     year: "2024",
   },
 ];

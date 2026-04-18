@@ -37,11 +37,11 @@ export function FloatingConsultButton({
   imageAlt = "Foto profile Sehanaf",
   revolvingText = "CHAT WITH MY AI  •  DISCOVER MY JOURNEY  •  LET'S CONNECT",
   revolvingSpeed = 10,
-  popupHeading = "Chat AI Sehanaf",
+  popupHeading = "Sehanaf AI Chat",
   popupDescription =
-    "Ruang percakapan AI ini disiapkan agar pengunjung bisa mengenal saya lebih dalam. Integrasi Groq + Llama akan disambungkan pada fase berikutnya.",
+    "This AI chat space is designed to help visitors get to know me better. Groq + Llama integration will be connected in the next phase.",
   popupBadgeText = "Beta",
-  ctaButtonText = "Mulai Chat AI",
+  ctaButtonText = "Start AI Chat",
   ctaButtonAction,
   position = { bottom: "0.5rem", right: "0.5rem" },
 }: FloatingConsultButtonProps) {
@@ -69,9 +69,9 @@ export function FloatingConsultButton({
 
   const suggestedPrompts = useMemo(
     () => [
-      "Ceritakan journey karier Sehanaf",
-      "Apa keunggulan teknis utama Sehanaf?",
-      "Project mana yang paling impactful?",
+      "Tell me about Sehanaf's career journey",
+      "What are Sehanaf's key technical strengths?",
+      "Which project was most impactful?",
     ],
     [],
   );
@@ -199,7 +199,7 @@ export function FloatingConsultButton({
                   showPendingMessage ? "opacity-100" : "opacity-0",
                 )}
               >
-                UI chat sudah siap. Integrasi model Groq/Llama akan kamu aktifkan di tahap berikutnya.
+                Chat UI is ready. Groq/Llama model integration will be activated in the next phase.
               </p>
             </div>
           </motion.section>

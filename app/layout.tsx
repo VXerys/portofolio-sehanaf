@@ -30,8 +30,8 @@ const maghfirea = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Sehanaf",
-  description: "Creative portfolio with Maghfirea and Inter local typography theme",
+  title: "Sehan Alfarisi | Creative Developer Portfolio",
+  description: "Official portfolio of Sehan Alfarisi, a Creative Developer specializing in Web Development, UI/UX Design, and AI Solutions based in Sukabumi, Indonesia.",
 };
 
 export default function RootLayout({
