@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowDownRight } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import { InfiniteGrid } from "@/components/ui/infinite-grid-integration";
+import { ImageSwapStack } from "@/components/ui/image-swap-stack";
   
 export function HeroSection04() {
   return (
@@ -14,7 +15,7 @@ export function HeroSection04() {
             2026
           </p>
           <h1
-            className={`z-20 text-base-content relative font-bold text-center tracking-tight md:tracking-[-7px] text-[3.25rem] leading-[1] md:text-9xl xl:tracking-[-1rem] md:tracking-[-14px] xl:text-[10rem] uppercase`}
+            className={`font-display z-20 text-base-content relative font-extrabold text-center tracking-tight md:tracking-[-4px] text-[3.25rem] leading-[1] md:text-9xl xl:tracking-[-8px] md:tracking-[-6px] xl:text-[10rem] uppercase`}
           >
             CREATIVE DEVELOPER
           </h1>
@@ -74,29 +75,13 @@ export function HeroSection04() {
         </div>
 
         <div className="md:flex mt-16 md:mt-20 items-end justify-between px-4 md:px-0">
-          <div className="relative mx-auto md:mx-0 w-[200px] md:w-auto mb-16 md:mb-0 mt-8 md:mt-0">
-            <div className="w-[200px] h-28 md:w-60 md:h-36 shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0 relative z-10">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-[200px] h-28 md:w-60 md:h-36 absolute left-4 -top-4 md:left-6 md:-top-6  shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0 z-20">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-[200px] h-28 md:w-60 md:h-36 absolute left-8 -top-8 md:left-12 md:-top-12  shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0 z-30">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <ImageSwapStack 
+            images={[
+              "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80",
+              "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
+              "https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
+            ]}
+          />
           <div className="text-center md:text-right flex flex-col items-center md:items-end w-full md:w-auto">
             <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
               <span className="text-sm md:text-lg font-medium tracking-wider">

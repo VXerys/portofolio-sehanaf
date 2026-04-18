@@ -1,32 +1,21 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { DM_Sans, Syne } from "next/font/google";
 import GSAPProvider from "@/components/anim/gsap-provider";
 import LenisProvider from "@/components/anim/lenis-provider";
 import "./globals.css";
 
-const inter = localFont({
-  src: [
-    {
-      path: "../public/fonts/inter/Inter-VariableFont_opsz,wght.ttf",
-      style: "normal",
-      weight: "100 900",
-    },
-    {
-      path: "../public/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf",
-      style: "italic",
-      weight: "100 900",
-    },
-  ],
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  fallback: ["system-ui", "Arial", "sans-serif"],
 });
 
-const maghfirea = localFont({
-  src: "../public/fonts/maghfirea/Maghfirea.ttf",
-  variable: "--font-maghfirea",
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +33,7 @@ export default function RootLayout({
       lang="en"
       data-theme="light"
       suppressHydrationWarning
-      className={`${inter.variable} ${maghfirea.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${syne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <GSAPProvider>
