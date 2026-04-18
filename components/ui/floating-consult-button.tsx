@@ -1,9 +1,11 @@
 "use client";
 
-import { type CSSProperties, useEffect, useId, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useId, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Sparkles, X } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -33,7 +35,7 @@ export function FloatingConsultButton({
   imageSize,
   imageSrc = "/images/projects/foto-saya.png",
   imageAlt = "Foto profile Sehanaf",
-  revolvingText = "GET IN TOUCH",
+  revolvingText = "CHAT WITH MY AI  •  DISCOVER MY JOURNEY  •  LET'S CONNECT",
   revolvingSpeed = 10,
   popupHeading = "Chat AI Sehanaf",
   popupDescription =
@@ -41,30 +43,27 @@ export function FloatingConsultButton({
   popupBadgeText = "Beta",
   ctaButtonText = "Mulai Chat AI",
   ctaButtonAction,
-  position = { bottom: "1.5rem", right: "1.5rem" },
+  position = { bottom: "0.5rem", right: "0.5rem" },
 }: FloatingConsultButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showPendingMessage, setShowPendingMessage] = useState(false);
   const [imageHasError, setImageHasError] = useState(false);
   const circlePathId = useId();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const rotationRef = useRef<SVGSVGElement>(null);
   const circleRadius = 78;
-  const circleCircumference = Math.round(2 * Math.PI * circleRadius);
 
   const desktopButtonSize = buttonSize || 152;
-  const tabletButtonSize = Math.round(desktopButtonSize * 0.84);
-  const mobileButtonSize = Math.round(desktopButtonSize * 0.72);
+  const mobileButtonSize = Math.round(desktopButtonSize * 0.64);
 
   const desktopImageSize = imageSize || 92;
-  const tabletImageSize = Math.round(desktopImageSize * 0.86);
-  const mobileImageSize = Math.round(desktopImageSize * 0.74);
+  const mobileImageSize = Math.round(desktopImageSize * 0.64);
 
   const wrapperStyle = {
     ...position,
     "--floating-btn-mobile": `${mobileButtonSize}px`,
-    "--floating-btn-tablet": `${tabletButtonSize}px`,
     "--floating-btn-desktop": `${desktopButtonSize}px`,
     "--floating-img-mobile": `${mobileImageSize}px`,
-    "--floating-img-tablet": `${tabletImageSize}px`,
     "--floating-img-desktop": `${desktopImageSize}px`,
   } as CSSProperties;
 
@@ -78,9 +77,29 @@ export function FloatingConsultButton({
   );
 
   const circularText = useMemo(() => {
-    const normalizedText = revolvingText.trim().replace(/\s+/g, " ");
-    return (normalizedText || "GET IN TOUCH").toUpperCase();
+    const text = (revolvingText || "").trim().toUpperCase();
+    // If it's the new complex default or already contains separators, just ensure it ends with one
+    if (text.includes("•") || text.length > 30) {
+      return text.endsWith("•") ? `${text}  ` : `${text}  •  `;
+    }
+    // For short simple strings, repeat 3 times
+    return `${text}  •  ${text}  •  ${text}  •  `;
   }, [revolvingText]);
+
+  useGSAP(
+    () => {
+      if (!rotationRef.current) return;
+
+      gsap.to(rotationRef.current, {
+        rotation: 360,
+        duration: revolvingSpeed,
+        repeat: -1,
+        ease: "none",
+        transformOrigin: "center center",
+      });
+    },
+    { scope: buttonRef },
+  );
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -189,10 +208,11 @@ export function FloatingConsultButton({
 
       <div className="fixed z-[45]" style={wrapperStyle}>
         <motion.button
+          ref={buttonRef}
           type="button"
           aria-expanded={isOpen}
           aria-label="Open Chat AI popup"
-          className="relative h-[var(--floating-btn-mobile)] w-[var(--floating-btn-mobile)] cursor-pointer sm:h-[var(--floating-btn-tablet)] sm:w-[var(--floating-btn-tablet)] lg:h-[var(--floating-btn-desktop)] lg:w-[var(--floating-btn-desktop)]"
+          className="relative h-[var(--floating-btn-mobile)] w-[var(--floating-btn-mobile)] cursor-pointer sm:h-[var(--floating-btn-desktop)] sm:w-[var(--floating-btn-desktop)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
           transition={{ duration: 0.25 }}
@@ -201,16 +221,8 @@ export function FloatingConsultButton({
             setIsOpen((currentState) => !currentState);
           }}
         >
-          <motion.div
-            className="absolute inset-0"
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: revolvingSpeed,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            <svg viewBox="0 0 200 200" className="h-full w-full text-base-content/70">
+          <div className="absolute inset-0">
+            <svg ref={rotationRef} viewBox="0 0 200 200" className="h-full w-full text-base-content/70">
               <defs>
                 <path
                   id={circlePathId}
@@ -218,25 +230,25 @@ export function FloatingConsultButton({
                 />
               </defs>
               <text
-                className="[font-size:11px] font-semibold uppercase tracking-[0.11em] sm:[font-size:12.5px] sm:tracking-[0.13em] lg:[font-size:14px] lg:tracking-[0.15em]"
+                className="font-sans [font-size:10px] font-bold uppercase tracking-[0.15em] sm:[font-size:12px] sm:tracking-[0.18em]"
                 fill="currentColor"
                 textAnchor="middle"
               >
                 <textPath
                   href={`#${circlePathId}`}
                   startOffset="50%"
-                  textLength={circleCircumference}
+                  textLength="490"
                   lengthAdjust="spacing"
                 >
                   {circularText}
                 </textPath>
               </text>
             </svg>
-          </motion.div>
+          </div>
 
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="relative h-[var(--floating-img-mobile)] w-[var(--floating-img-mobile)] overflow-hidden rounded-full border border-base-300 bg-base-content shadow-xl transition-shadow duration-300 hover:shadow-2xl sm:h-[var(--floating-img-tablet)] sm:w-[var(--floating-img-tablet)] lg:h-[var(--floating-img-desktop)] lg:w-[var(--floating-img-desktop)]"
+              className="relative h-[var(--floating-img-mobile)] w-[var(--floating-img-mobile)] overflow-hidden rounded-full border border-base-300 bg-base-content shadow-xl transition-shadow duration-300 hover:shadow-2xl sm:h-[var(--floating-img-desktop)] sm:w-[var(--floating-img-desktop)]"
             >
               {imageHasError ? (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-secondary text-primary-content">
@@ -248,7 +260,7 @@ export function FloatingConsultButton({
                     src={imageSrc}
                     alt={imageAlt}
                     fill
-                    sizes="(min-width: 1024px) 96px, 80px"
+                    sizes="(min-width: 640px) 92px, 60px"
                     className="object-cover object-[50%_32%]"
                     onError={() => setImageHasError(true)}
                   />
