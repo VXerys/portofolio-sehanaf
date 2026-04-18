@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { ArrowDownRight } from "lucide-react"; 
-import { Button } from "@/components/ui/button";
+import { ButtonHoverReveal } from "@/components/ui/button-5";
 import { InfiniteGrid } from "@/components/ui/infinite-grid-integration";
 import { ImageSwapStack } from "@/components/ui/image-swap-stack";
   
@@ -71,7 +71,7 @@ export function HeroSection04() {
           </p>
         </div>
         <div className="flex justify-center pt-6">
-        <Button size={"lg"}>Book a call</Button>
+          <ButtonHoverReveal />
         </div>
 
         <div className="md:flex mt-16 md:mt-20 items-end justify-between px-4 md:px-0">
