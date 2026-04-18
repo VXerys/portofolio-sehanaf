@@ -356,9 +356,9 @@ export default function ServicesWithAnimatedHoverModal() {
   };
 
   return (
-    <div className="overflow-hidden bg-base-100 py-4 text-base-content sm:py-8">
+    <div className="overflow-hidden bg-base-100 pb-8 pt-0 text-base-content">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="relative flex min-h-[55vh] items-center justify-center">
+        <div className="relative flex min-h-fit items-center justify-center">
           <div className="flex w-full flex-col items-center justify-center">
             {projects.map((project, index) => (
               <Project

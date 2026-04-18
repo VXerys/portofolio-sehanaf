@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { ArrowUpRight } from "lucide-react"; 
+import { ArrowDownRight } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
   
 export function HeroSection04() {
   return (
-    <section className="min-h-screen overflow-hidden relative py-20">
+    <section className="min-h-[85vh] overflow-hidden relative pt-20 pb-2">
       <div className="mx-auto max-w-7xl relative z-20 px-6">
         <div className="relative ">
           <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
@@ -99,7 +99,7 @@ export function HeroSection04() {
               <span className="text-lg font-medium tracking-wider">
                 VIEW PROJECTS
               </span>
-              <ArrowUpRight className="size-6" />
+              <ArrowDownRight className="size-6" />
             </div>
 
             <div className="mt-3 md:text-right">
